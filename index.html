@@ -22,6 +22,7 @@
   <div class="wrap">
     <a class="brand" href="#">Gabriel Reynes</a>
     <nav>
+      <a href="#courts-metrages">Courts-métrages</a>
       <a href="#projets">Projets</a>
       <a href="#apropos">À propos</a>
       <a href="#contact">Contact</a>
@@ -34,16 +35,23 @@
     <div class="wrap">
       <h1>Monteur vidéo, VFX et motion design.</h1>
       <p class="lead">Étudiant à l'École MJM, à Marseille. Je recherche une alternance pour ma deuxième année.</p>
+      <h2>Showreel 2026</h2>
       <button class="thumb" data-yt="rlM2Nu8rP6U" data-t="Showreel 2026" aria-label="Lire le showreel 2026">
         <img alt="" src="https://i.ytimg.com/vi/rlM2Nu8rP6U/maxresdefault.jpg">
       </button>
     </div>
   </section>
 
+  <section id="courts-metrages">
+    <div class="wrap">
+      <h2>Courts-métrages</h2>
+      <div class="feature" id="feature"></div>
+    </div>
+  </section>
+
   <section id="projets">
     <div class="wrap">
       <h2>Projets</h2>
-      <div class="feature" id="feature"></div>
       <div class="rows" id="rows"></div>
     </div>
   </section>
@@ -86,20 +94,22 @@
 </dialog>
 
 <script>
-// [id YouTube, titre, tags]. Les 2 premiers sont mis en avant, les autres passent en liste.
+// [id YouTube, titre, tags]
+const SHORTS = [
+  ["7sJmzSF7omI", "ECRAN NOIR", "montage, VFX, motion design"],
+  ["gAMNoZDh3xM", "inSENSés", "court métrage, narration, montage"]
+];
 const PROJECTS = [
-  ["LDLukiPrrUE", "ECRAN NOIR", "montage, VFX, motion design"],
-  ["gAMNoZDh3xM", "inSENSés", "court métrage, narration, montage"],
-  ["9vyyGJCEW_o", "Qwantic, artisan du cristal", "artisanat, montage, storytelling"],
   ["SOvs1RqWv5I", "Fight Club", "trailer, montage, sound design"],
   ["15q45Lw8U_c", "RED", "projet MJM, montage, création"],
-  ["7sJmzSF7omI", "Comme un Souvenir", "montage, narration"],
-  ["me67-M6wkik", "Salle d'interrogatoire 1", "mise en scène, montage"],
-  ["OveZ6BbA1hc", "Salle d'interrogatoire 2", "mise en scène, montage"],
-  ["RioQ6l6_J3k", "Enrico Macias", "montage, création"],
-  ["1MFjxhllrdU", "La voltige équestre", "montage dynamique, rythme"],
+  ["me67-M6wkik", "Comme un Souvenir", "montage, narration"],
   ["KyEOBGHac5M", "ZOO", "montage, direction artistique"],
   ["ysrfxBA_bac", "SMR13", "montage, création"],
+  ["OveZ6BbA1hc", "Salle d'interrogatoire", "mise en scène, montage"],
+  ["1MFjxhllrdU", "La voltige équestre", "montage dynamique, rythme"],
+  ["9vyyGJCEW_o", "L'artisan du cristal", "artisanat, montage, storytelling"],
+  ["LDLukiPrrUE", "Without music", "montage, sound design"],
+  ["RioQ6l6_J3k", "Enrico Macias", "montage, création"],
   ["euWU8RQqyKw", "Comme un Souvenir (TikTok)", "format vertical, réseaux sociaux"],
   ["Ew4zXD0ynVI", "Micro-trottoir de Marseille à Rio", "format vertical, réseaux sociaux"],
   ["YqwD2TiASsk", "Série Suits (projet libre Qwantic)", "format vertical, montage"]
@@ -109,8 +119,8 @@ const img = id => `<img loading="lazy" alt="" src="https://i.ytimg.com/vi/${id}/
 const card = ([id, title, tags], cls) =>
   `<button class="${cls}" data-yt="${id}" data-t="${title}"><span class="thumb">${img(id)}</span><span><span class="t">${title}</span><span class="m">${tags}</span></span></button>`;
 
-document.getElementById("feature").innerHTML = PROJECTS.slice(0, 2).map(p => card(p, "item")).join("");
-document.getElementById("rows").innerHTML = PROJECTS.slice(2).map(p => card(p, "row")).join("");
+document.getElementById("feature").innerHTML = SHORTS.map(p => card(p, "item")).join("");
+document.getElementById("rows").innerHTML = PROJECTS.map(p => card(p, "row")).join("");
 
 const dlg = document.getElementById("player");
 const frame = dlg.querySelector(".frame");
