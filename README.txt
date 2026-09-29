@@ -1,6 +1,6 @@
 # Portfolio Gabriel Reynes
 
-Portfolio vidéo gratuit — version 1.
+Portfolio vidéo — version 1.
 
 ## Mise en ligne avec GitHub Pages
 
